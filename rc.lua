@@ -38,11 +38,11 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+beautiful.init("/home/pantera/.config/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "gnome-terminal"
-editor = os.getenv("EDITOR") or "vim"
+editor = os.getenv("EDITOR") or "gedit"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -241,9 +241,9 @@ globalkeys = awful.util.table.join(
 
     -- Custom keybindings
     
-    awful.key({           }, "XF86AudioRaiseVolume", function () awful.util.spawn("sh /home/pantera/repos/shell-scripts/volup.sh") end),
-    awful.key({           }, "XF86AudioLowerVolume", function () awful.util.spawn("sh /home/pantera/repos/shell-scripts/voldown.sh") end),
-    awful.key({           }, "XF86AudioMute", function () awful.util.spawn("sh /home/pantera/repos/shell-scripts/volmute.sh") end),
+    awful.key({           }, "XF86AudioRaiseVolume", function () awful.util.spawn("ruby /home/pantera/repos/shell-scripts/volume.rb up") end),
+    awful.key({           }, "XF86AudioLowerVolume", function () awful.util.spawn("ruby /home/pantera/repos/shell-scripts/volume.rb down") end),
+    awful.key({           }, "XF86AudioMute", function () awful.util.spawn("ruby /home/pantera/repos/shell-scripts/volume.rb toggle") end),
     awful.key({modkey,    }, "KP_Add", function () awful.util.spawn("sh /home/pantera/repos/shell-scripts/mpcontrol.sh") end),
     awful.key({modkey,    }, "KP_Subtract", function () awful.util.spawn("sh /home/pantera/repos/shell-scripts/lyrics.sh") end),
     awful.key({modkey,    }, "KP_Begin", function () awful.util.spawn("mpc toggle") end), 
@@ -301,7 +301,7 @@ awful.key({ modkey,           }, "r",
 )
 
 clientkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
+    awful.key({ modkey, "Shift"   }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
@@ -382,7 +382,8 @@ awful.rules.rules = {
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
+--                     focus = awful.client.focus.filter,
+					 focus = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
@@ -392,10 +393,12 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
-    { rule = { class = "Firefox" },
-      properties = { tag = tags[1][2] } },
     { rule = { class = "Vlc" },
       properties = { tag = tags[1][1] } },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][2] } },
+    { rule = { class = "Geany" },
+      properties = { tag = tags[1][4] } },
     { rule = { name = "ncmpcpp" },
       properties = { tag = tags[1][5] } },
     { rule = { class = "Nautilus" },
