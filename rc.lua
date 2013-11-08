@@ -244,6 +244,8 @@ globalkeys = awful.util.table.join(
     awful.key({           }, "XF86AudioRaiseVolume", function () awful.util.spawn("ruby /home/pantera/repos/shell-scripts/volume.rb up") end),
     awful.key({           }, "XF86AudioLowerVolume", function () awful.util.spawn("ruby /home/pantera/repos/shell-scripts/volume.rb down") end),
     awful.key({           }, "XF86AudioMute", function () awful.util.spawn("ruby /home/pantera/repos/shell-scripts/volume.rb toggle") end),
+    awful.key({           }, "XF86Display", function () awful.util.spawn("python /home/pantera/repos/python-scripts/xrandr_multiple_monitor.py") end),
+    awful.key({modkey,    }, "F2", function () awful.util.spawn("python /home/pantera/repos/python-scripts/xrandr_multiple_monitor.py") end),
     awful.key({modkey,    }, "KP_Add", function () awful.util.spawn("sh /home/pantera/repos/shell-scripts/mpcontrol.sh") end),
     awful.key({modkey,    }, "KP_Subtract", function () awful.util.spawn("sh /home/pantera/repos/shell-scripts/lyrics.sh") end),
     awful.key({modkey,    }, "KP_Begin", function () awful.util.spawn("mpc toggle") end), 
@@ -306,13 +308,13 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
-    awful.key({ modkey,           }, "n",
-        function (c)
+    --awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
+   -- awful.key({ modkey,           }, "n",
+   --     function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end),
+     --       c.minimized = true
+       -- end),
     awful.key({ modkey,           }, "m",
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
