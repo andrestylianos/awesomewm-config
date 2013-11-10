@@ -42,7 +42,7 @@ beautiful.init("/home/pantera/.config/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "gnome-terminal"
-editor = os.getenv("EDITOR") or "gedit"
+editor = os.getenv("EDITOR") or "geany"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -247,7 +247,7 @@ globalkeys = awful.util.table.join(
     awful.key({           }, "XF86Display", function () awful.util.spawn("python /home/pantera/repos/python-scripts/xrandr_multiple_monitor.py") end),
     awful.key({modkey,    }, "F2", function () awful.util.spawn("python /home/pantera/repos/python-scripts/xrandr_multiple_monitor.py") end),
     awful.key({modkey,    }, "KP_Add", function () awful.util.spawn("sh /home/pantera/repos/shell-scripts/mpcontrol.sh") end),
-    awful.key({modkey,    }, "KP_Subtract", function () awful.util.spawn("sh /home/pantera/repos/shell-scripts/lyrics.sh") end),
+    awful.key({modkey,    }, "KP_Subtract", function () awful.util.spawn("python /home/pantera/repos/python-scripts/mpc_lyrics.py") end),
     awful.key({modkey,    }, "KP_Begin", function () awful.util.spawn("mpc toggle") end), 
     awful.key({modkey,    }, "KP_Right", function () awful.util.spawn("mpc next") end),
     awful.key({modkey,    }, "KP_Left", function () awful.util.spawn("mpc prev") end),
