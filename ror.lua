@@ -10,7 +10,7 @@
 
 table5={
    ["g"]={"geany","Geany"}, 
-   ["f"]={"firefox","Firefox"},
+   ["f"]={"google-chrome-stable","Google-chrome-stable"},
    ["v"]={"vlc","Vlc"}, 
    ["t"]={"gnome-terminal","Terminal", "name"},
    ["n"]={"nautilus","Nautilus"},
